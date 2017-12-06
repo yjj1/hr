@@ -332,7 +332,10 @@ class Email:
         session.commit()
         sql = 'select A.emailId from temp_email A where A.emailId not in  (select emailId from origin_email)'
         c = session.execute(sql)
-
+        list = []
+        for row in c :
+            print row[0]
+            list.append(row[0])
         return resp
 
 

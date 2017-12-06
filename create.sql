@@ -49,3 +49,39 @@ CREATE TABLE family
   company        VARCHAR(50) DEFAULT '' NULL,
   job            VARCHAR(50)            NULL
 )ENGINE =InnoDb DEFAULT CHARSET =utf8;
+
+-- auto-generated definition
+CREATE TABLE resume_apply
+(
+  applyId   VARCHAR(50)            NOT NULL
+    PRIMARY KEY,
+  applier   VARCHAR(50) DEFAULT '' NULL,
+  resumeId  VARCHAR(50) DEFAULT '' NULL,
+  applyDate VARCHAR(50) DEFAULT '' NULL,
+  emailId   VARCHAR(50) DEFAULT '' NULL,
+  status    VARCHAR(50) DEFAULT '' NULL
+);
+
+-- auto-generated definition
+CREATE TABLE origin_email
+(
+  emailId     VARCHAR(50)             NOT NULL
+    PRIMARY KEY,
+  emailName   VARCHAR(200) DEFAULT '' NULL,
+  `from`      VARCHAR(50) DEFAULT ''  NULL,
+  `to`        VARCHAR(50) DEFAULT ''  NULL,
+  size        VARCHAR(50) DEFAULT ''  NULL,
+  report      VARCHAR(50) DEFAULT ''  NULL,
+  isRead      VARCHAR(50) DEFAULT ''  NULL,
+  sendDate    VARCHAR(50) DEFAULT ''  NULL,
+  receiveDate VARCHAR(50) DEFAULT ''  NULL,
+  priority    VARCHAR(50) DEFAULT ''  NULL
+);
+
+-- auto-generated definition
+CREATE TABLE temp_email
+(
+  emailId   VARCHAR(50)             NOT NULL
+    PRIMARY KEY,
+  emailName VARCHAR(200) DEFAULT '' NULL
+);
