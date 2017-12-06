@@ -1,21 +1,51 @@
-create table resume_base_info (resumeId VARCHAR(50) PRIMARY KEY
-  , resumeCode VARCHAR(50) DEFAULT '',
-name VARCHAR(50) DEFAULT '', sex VARCHAR(50) DEFAULT '',
-birthday VARCHAR(50) DEFAULT '', eduBack VARCHAR(50) DEFAULT '',
-eduDegree VARCHAR(50) DEFAULT '', school VARCHAR(50) DEFAULT '',
-phone VARCHAR(50) DEFAULT '', homePhone VARCHAR(50) DEFAULT '',
-resumePath VARCHAR(100) DEFAULT '',politicsStatus VARCHAR(50) DEFAULT '',
-nativePlace VARCHAR(50) DEFAULT '', address VARCHAR(100) DEFAULT '',
-bigBang VARCHAR(200) DEFAULT '',height VARCHAR(50) DEFAULT '',
-  healtht VARCHAR(50) DEFAULT '',marriage VARCHAR(50) DEFAULT ''
-,idcard VARCHAR(50) DEFAULT '')ENGINE =InnoDb DEFAULT CHARSET =utf8;
+-- auto-generated definition
+CREATE TABLE resume_base_info
+(
+  resumeId         VARCHAR(50)             NOT NULL
+    PRIMARY KEY,
+  resumeCode       VARCHAR(50) DEFAULT ''  NULL,
+  name             VARCHAR(50) DEFAULT ''  NULL,
+  sex              VARCHAR(50) DEFAULT ''  NULL,
+  birthday         VARCHAR(50) DEFAULT ''  NULL,
+  eduBack          VARCHAR(50) DEFAULT ''  NULL,
+  eduDegree        VARCHAR(50) DEFAULT ''  NULL,
+  school           VARCHAR(50) DEFAULT ''  NULL,
+  phone            VARCHAR(50) DEFAULT ''  NULL,
+  homePhone        VARCHAR(50) DEFAULT ''  NULL,
+  resumePath       VARCHAR(100) DEFAULT '' NULL,
+  politicsStatus   VARCHAR(50) DEFAULT ''  NULL,
+  nativePlace      VARCHAR(50) DEFAULT ''  NULL,
+  address          VARCHAR(100) DEFAULT '' NULL,
+  bigBang          VARCHAR(200) DEFAULT '' NULL,
+  height           VARCHAR(50) DEFAULT ''  NULL,
+  healthy          VARCHAR(50) DEFAULT ''  NULL,
+  marriage         VARCHAR(50) DEFAULT ''  NULL,
+  idcard           VARCHAR(50) DEFAULT ''  NULL,
+  job              VARCHAR(50) DEFAULT ''  NULL,
+  isAddressControl VARCHAR(50) DEFAULT ''  NULL
+)ENGINE =InnoDb DEFAULT CHARSET =utf8;
 
-create table edu(eduId VARCHAR(50) PRIMARY KEY ,
-resumeId VARCHAR(50) DEFAULT '', eduType VARCHAR(50) DEFAULT '',
-schoolName VARCHAR(100) DEFAULT '', eduDate VARCHAR(50) DEFAULT '',
-eduPro VARCHAR(50) DEFAULT '')ENGINE =InnoDb DEFAULT CHARSET =utf8;
+-- auto-generated definition
+CREATE TABLE edu
+(
+  eduId      VARCHAR(50)             NOT NULL
+    PRIMARY KEY,
+  resumeId   VARCHAR(50) DEFAULT ''  NULL,
+  eduType    VARCHAR(50) DEFAULT ''  NULL,
+  schoolName VARCHAR(100) DEFAULT '' NULL,
+  eduDate    VARCHAR(50) DEFAULT ''  NULL,
+  eduPro     VARCHAR(50) DEFAULT ''  NULL
+)ENGINE =InnoDb DEFAULT CHARSET =utf8;
 
-create table family(familyId VARCHAR(50) PRIMARY KEY ,
-resumeId VARCHAR(50) DEFAULT '', relationShip VARCHAR(50) DEFAULT '',
-name VARCHAR(50) DEFAULT '', politicsStatus VARCHAR(50) DEFAULT '',
-company VARCHAR(50) DEFAULT '', job VARCHAR(50))ENGINE =InnoDb DEFAULT CHARSET =utf8;
+-- auto-generated definition
+CREATE TABLE family
+(
+  familyId       VARCHAR(50)            NOT NULL
+    PRIMARY KEY,
+  resumeId       VARCHAR(50) DEFAULT '' NULL,
+  relationShip   VARCHAR(50) DEFAULT '' NULL,
+  name           VARCHAR(50) DEFAULT '' NULL,
+  politicsStatus VARCHAR(50) DEFAULT '' NULL,
+  company        VARCHAR(50) DEFAULT '' NULL,
+  job            VARCHAR(50)            NULL
+)ENGINE =InnoDb DEFAULT CHARSET =utf8;
