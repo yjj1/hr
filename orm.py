@@ -11,7 +11,7 @@ class EmailOrm(Base):
     __tablename__   = 'origin_email'
 
     emailId = Column(String(50), primary_key=True)
-    emailName = Column(String(50))
+    emailName = Column(String(200))
     sendDate = Column(String(50))
     receiveDate = Column(String(50))
     fromWho = Column(String(50), name='from')
@@ -32,6 +32,8 @@ class ResumeApply(Base):
     applier = Column(String(50))
     resumeId = Column(String(50))
     applyDate = Column(String(50))
+    emailId = Column(String(50))
+    status = Column(String(50))
 
     def __init__(self, id):
         self.applyId = id
@@ -94,3 +96,13 @@ class Family(Base):
 
     def __init__(self, id):
         self.familyId = id
+
+class TempEmail(Base):
+
+    __tablename__   = 'temp_email'
+
+    emailId = Column(String(50), primary_key=True)
+    emailName = Column(String(200))
+
+    def __init__(self, id):
+        self.emailId = id

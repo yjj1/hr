@@ -211,7 +211,7 @@ class ParseDoc:
         return new_file_path
 
 if __name__ == '__main__':
-    text = ParseDoc().parse('D:\\test2x.doc')
+    text = ParseDoc().parse('D:\\test2.doc')
     # ParseDoc().zipParse('/users/jianjingye/test2.doc')
     # for t in text:
     #     print t.text

@@ -5,10 +5,14 @@ import urllib
 import urllib2
 
 import os
+import uuid
+
 import requests
 import time
 from bs4 import BeautifulSoup
-from orm import EmailOrm
+
+from connect_db import ConnectDb
+from orm import EmailOrm, TempEmail
 import sys
 
 from parseDoc import ParseDoc
@@ -180,6 +184,7 @@ class Email:
 
         for e in list:
             print e.emailId, e.emailName, e.fromWho, e.toWho
+
             # self.parsePerEmail(e)
 
         return list
@@ -310,9 +315,23 @@ class Email:
         # print rs.decode('GBK')
         # print resp1.content
 
+        #清空临时邮件表
+        connectDb = ConnectDb()
+        session = connectDb.db_session
+        tempList = session.query(TempEmail).filter()
+        for temp in tempList:
+            session.delete(temp)
+
+        #将邮件放入临时邮件表
         for e in list:
             if '玉环农商行2018' in e.emailName:
                 self.parsePerEmail(e)
+                tempE = TempEmail(e.emailId)
+                tempE.emailName = e.emailName
+                session.add(tempE)
+        session.commit()
+        sql = 'select A.emailId from temp_email A where A.emailId not in  (select emailId from origin_email)'
+        c = session.execute(sql)
 
         return resp
 
