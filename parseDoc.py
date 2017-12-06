@@ -17,8 +17,11 @@ class ParseDoc:
     def __init__(self):
         print 'init'
     def parse(self,file_path):
-        suffix = os.path.splitext(file_path)[1]
-        if suffix is '.doc':
+        path_array = os.path.splitext(file_path)
+        file_name = path_array[0]
+        suffix = path_array[1]
+        sDoc = '.doc'
+        if suffix == sDoc:
             file_path = self.doc2docx(file_path)
         fullText = []
         doc = docx.Document(file_path)
@@ -35,12 +38,9 @@ class ParseDoc:
         #             print p.text
         #             fullText.append(p)
         t = tables[0]
-        # for i in range(0, 330):
-        #
-        #     content = t.cell(0, i).text
-        #     # if type(content) is types.StringType:
-        #     #     if content is not None & content != '' & content != ' ':
-        #     print content, '(',0,',',i, ')'
+        for i in range(0, 330):
+            content = t.cell(0, i).text
+            print content, '(',0,',',i, ')'
 
         sUuid = str(uuid.uuid4())
         data = ResumeBaseInfo(sUuid)
@@ -200,17 +200,18 @@ class ParseDoc:
 
     def doc2docx(self, file_path):
         new_file_path = file_path + 'x'
+
         word = wc.Dispatch('Word.Application')
         doc = word.Documents.Open(file_path)
-        doc.SaveAs(new_file_path, 16)
-        doc.close()
+        doc.SaveAs(new_file_path, FileFormat=16)
+        doc.Close()
 
         word.Quit()
 
         return new_file_path
 
 if __name__ == '__main__':
-    text = ParseDoc().parse('/users/jianjingye/test2.doc')
+    text = ParseDoc().parse('D:\\test2x.doc')
     # ParseDoc().zipParse('/users/jianjingye/test2.doc')
     # for t in text:
     #     print t.text
