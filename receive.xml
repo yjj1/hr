@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<result>
+    <code>S_OK</code>
+        <array name="var">
+            <object>
+                <string name="id">247:1tbi9xMAAB8OXPdtPYdQcZ</string>
+                <int name="fid">1</int>
+                <int name="size">10855</int>
+                <string name="from">"网易手机号码邮箱" &lt;phone@service.netease.com&gt;</string>
+                <string name="to">15258297577@163.com</string>
+                <string name="subject">您的网易手机号码邮箱激活成功</string>
+                <date name="sentDate">2016-04-13 14:36:29</date>
+                <date name="receivedDate">2016-04-13 14:36:30</date>
+                <int name="priority">3</int>
+                <int name="backgroundColor">0</int>
+                <string name="antiVirusStatus">unscaned</string>
+                <int name="label0">0</int>
+                <object name="flags" />
+                <string name="emid">xtbBDg1KYlQG49H3bwAAsT</string>
+                <string name="hmid">&lt;839448994.890462.1460529389827.JavaMail.phone@service.netease.com&gt;</string>
+            </object>
+<object>
+<string name="id">183:1tbitxNKYlaDqyfscQAAsI</string>
+<int name="fid">1</int>
+<int name="size">10623</int>
+<string name="from">"网易邮件中心" &lt;mail@service.netease.com&gt;</string>
+<string name="to">m15258297577_1@163.com</string>
+<string name="subject">全新体验，手机也能玩转网易邮箱</string>
+<date name="sentDate">2016-04-13 14:36:35</date>
+<date name="receivedDate">2016-04-13 14:36:35</date>
+<int name="priority">3</int>
+<int name="backgroundColor">0</int>
+<string name="antiVirusStatus">unscaned</string>
+<int name="label0">0</int>
+<object name="flags" />
+<object name="ctrls">
+<string name="RulesType">ntessys</string></object>
+<string name="hmid">&lt;1516749031.635915481.1460529394678.JavaMail.mail@service.netease.com&gt;</string></object>
+<object>
+<string name="id">496:xtbB8AIAACEVS4MGDx1ocy</string>
+<int name="fid">1</int>
+<int name="size">16474</int>
+<string name="from">"网易邮件中心" &lt;mail@service.netease.com&gt;</string>
+<string name="to">"m15258297577_1@163.com" &lt;m15258297577_1@163.com&gt;</string>
+<string name="subject">网易邮箱提醒：您邮箱的IMAP服务未开启</string>
+<date name="sentDate">2016-04-13 14:37:05</date>
+<date name="receivedDate">2016-04-13 14:37:05</date>
+<int name="priority">3</int>
+<int name="backgroundColor">0</int>
+<string name="antiVirusStatus">unscaned</string>
+<int name="label0">0</int>
+<object name="flags" />
+<object name="ctrls">
+<string name="RulesType">ntessys</string></object>
+<string name="emid">1tbiIBFKYlWBVVW6ogAAsV</string>
+<string name="hmid">&lt;219155558.98969955.1460529425463.JavaMail.mail@service.netease.com&gt;</string></object>
+<object>
+<string name="id">57:1tbiORZKYlXlS1IOPQAAsd</string>
+<int name="fid">1</int>
+<int name="size">8132</int>
+<string name="from">"微信团队" &lt;weixinteam@qq.com&gt;</string>
+<string name="to">15258297577@163.com</string>
+<string name="subject">激活你的微信公众平台帐号</string>
+<date name="sentDate">2016-04-13 14:37:42</date>
+<date name="receivedDate">2016-04-13 14:37:43</date>
+<int name="priority">3</int>
+<int name="backgroundColor">0</int>
+<string name="antiVirusStatus">novirus</string>
+<int name="label0">0</int>
+<object name="flags">
+<boolean name="read">true</boolean></object>
+<array name="accounts">
+<string>15258297577@163.com</string></array>
+<string name="hmid">&lt;10000@qq.com&gt;</string></object>
+<object>
+<string name="id">57:1tbiORZKYlXlS1IOPQABsc</string>
+<int name="fid">1</int>
+<int name="size">4324</int>
+<string name="from">"完美客服部" &lt;service@support.wanmei.com&gt;</string>
+<string name="to">"15***@163.com" &lt;15258297577@163.com&gt;</string>
+<string name="subject">完美世界-账号注册</string>
+<date name="sentDate">2016-04-16 19:18:26</date>
+<date name="receivedDate">2016-04-16 19:18:25</date>
+<int name="priority">3</int>
+<int name="backgroundColor">0</int>
+<string name="antiVirusStatus">novirus</string>
+<int name="label0">0</int>
+<object name="flags">
+<boolean name="read">true</boolean></object>
+<array name="accounts">
+<string>15258297577@163.com</string></array>
+<string name="hmid">&lt;17782540.12777197.1460805506029.JavaMail.root@redm1.wanmei.com&gt;</string></object>
+<object>
+<string name="id">203:1tbiyxMAACGzfFEV0NI2cG</string>
+<int name="fid">1</int>
+<int name="size">9110</int>
+<string name="from">"Bmob移动后端云服务平台" &lt;no-reply@mail.bmob.cn&gt;</string>
+<string name="to">15258297577@126.com</string>
+<string name="subject">Bmob--激活账号</string>
+<date name="sentDate">2016-07-05 08:58:53</date>
+<date name="receivedDate">2016-07-05 09:00:02</date>
+<int name="priority">3</int>
+<int name="backgroundColor">0</int>
+<string name="antiVirusStatus">novirus</string>
+<int name="label0">0</int>
+<object name="flags">
+<boolean name="report">true</boolean></object>
+<array name="accounts">
+<string>15258297577@163.com</string></array>
+<string name="emid">xtbBDhKdYlQG6eycPQAAsV</string>
+<string name="hmid">&lt;20160705005853.31003.83236.1D5073CC@mail.bmob.cn&gt;</string></object>
+            <object>
+                <string name="id">89:1tbiWRCdYlWBSs7GIgAAsC</string>
+                <int name="fid">1</int>
+                <int name="size">9088</int>
+                <string name="from">"Bmob移动后端云服务平台" &lt;no-reply@mail.bmob.cn&gt;</string>
+                <string name="to">15258297577@126.com</string>
+                <string name="subject">Bmob--激活账号</string>
+                <date name="sentDate">2016-07-05 08:59:55</date>
+                <date name="receivedDate">2016-07-05 09:00:01</date>
+                <int name="priority">3</int>
+                <int name="backgroundColor">0</int>
+                <string name="antiVirusStatus">novirus</string>
+                <int name="label0">0</int>
+                <object name="flags">
+                <boolean name="read">true</boolean>
+                <boolean name="report">true</boolean></object>
+                <array name="accounts">
+                <string>15258297577@163.com</string></array>
+                <string name="hmid">&lt;20160705005954.31086.79387.71ACF7EE@mail.bmob.cn&gt;</string>
+            </object>
+            <object>
+                <string name="id">89:1tbiWRukYlWBS0t6xAABsv</string>
+                <int name="fid">1</int>
+                <int name="size">10416</int>
+                <string name="from">"Bmob移动后端云服务平台" &lt;no-reply@mg.bmob.cn&gt;</string>
+                <string name="to">"yamei2014" &lt;15258297577@126.com&gt;</string>
+                <string name="subject">Bmob后端云推出定时任务功能</string>
+                <date name="sentDate">2016-07-18 15:33:53</date>
+                <date name="receivedDate">2016-07-18 15:34:18</date>
+                <int name="priority">3</int>
+                <int name="backgroundColor">0</int>
+                <string name="antiVirusStatus">novirus</string>
+                <int name="label0">0</int>
+                <object name="flags">
+                <boolean name="report">true</boolean></object>
+                <array name="accounts">
+                <string>15258297577@163.com</string></array>
+                <string name="hmid">&lt;20160718073346.28776.13722.82CABE1C@mg.bmob.cn&gt;</string>
+            </object>
+            <object>
+                <string name="id">49:1tbiMQv0YlUL8iaC2wAAs-</string>
+                <int name="fid">1</int>
+                <int name="size">8106</int>
+                <string name="from">"Bmob移动后端云服务平台" &lt;no-reply@mg.bmob.cn&gt;</string>
+                <string name="to">"yamei2014" &lt;15258297577@126.com&gt;</string>
+                <string name="subject">两步搞定app分发，专属下载页面让你的应用更高端！</string>
+                <date name="sentDate">2016-09-30 11:05:45</date>
+                <date name="receivedDate">2016-09-30 11:05:49</date>
+                <int name="priority">3</int>
+                <int name="backgroundColor">0</int>
+                <string name="antiVirusStatus">novirus</string>
+                <int name="label0">0</int>
+                <object name="flags">
+                <boolean name="report">true</boolean></object>
+                <array name="accounts">
+                <string>15258297577@163.com</string></array>
+                <string name="hmid">&lt;20160930030544.18699.26277.B0607AA5@mg.bmob.cn&gt;</string>
+            </object>
+            <object>
+                <string name="id">459:xtbByxPFYlO-42DqLQAAsX</string>
+                <int name="fid">1</int>
+                <int name="size">9091</int>
+                <string name="from">"Bmob移动后端云服务平台" &lt;no-reply@mg.bmob.cn&gt;</string>
+                <string name="to">"yamei2014" &lt;15258297577@126.com&gt;</string>
+                <string name="subject">关于延迟5月30日打款的通知</string>
+                <date name="sentDate">2017-04-26 16:08:50</date>
+                <date name="receivedDate">2017-04-26 16:08:52</date>
+                <int name="priority">3</int>
+                <int name="backgroundColor">0</int>
+                <string name="antiVirusStatus">novirus</string>
+                <int name="label0">0</int>
+                <object name="flags">
+                <boolean name="read">true</boolean>
+                <boolean name="report">true</boolean></object>
+                <array name="accounts">
+                <string>15258297577@163.com</string></array>
+                <string name="hmid">&lt;20170426080848.91092.20534.85B08777@mg.bmob.cn&gt;</string>
+            </object>
+            <object>
+                <string name="id">183:1tbitw2IYlaDzUoZ7QAAs2</string>
+                <int name="fid">1</int>
+                <int name="size">3530</int>
+                <string name="from">"网易" &lt;fa163@service.netease.com&gt;</string>
+                <string name="to">m15258297577_1@163.com</string>
+                <string name="subject">【通知】您有一封邀请函待查收</string>
+                <date name="sentDate">2017-11-07 06:54:56</date>
+                <date name="receivedDate">2017-11-07 06:55:09</date>
+                <int name="priority">3</int>
+                <int name="backgroundColor">0</int>
+                <string name="antiVirusStatus">unscaned</string>
+                <int name="label0">0</int>
+                <object name="flags">
+                <boolean name="read">true</boolean></object>
+                <date name="expirytime">2017-12-07</date>
+                <string name="hmid">&lt;25815678N11972&gt;</string>
+            </object>
+        </array>
+    <int name="midoffset">-1</int>
+</result>

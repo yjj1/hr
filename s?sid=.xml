@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<object>
+    <string name="id">89:1tbiWRykYlWBZr7WSgAAsT</string>
+    <boolean name="header">true</boolean>
+    <boolean name="returnImageInfo">true</boolean>
+    <boolean name="returnAntispamInfo">true</boolean>
+    <boolean name="autoName">true</boolean>
+    <object name="returnHeaders">
+        <string name="Resent-From">A</string>
+        <string name="Sender">A</string>
+        <string name="List-Unsubscribe">A</string>
+        <string name="Reply-To">A</string>
+    </object>
+    <boolean name="supportTNEF">true</boolean>
+</object>
+
+<?xml version="1.0" encoding="UTF-8"?>
+<result>
+<code>S_OK</code>
+<object name="var">
+<array name="from">
+<string>Mango_Y &lt;562550671@qq.com&gt;</string></array>
+<array name="to">
+<string>15258297577 &lt;15258297577@163.com&gt;</string></array>
+<object name="flags" />
+<boolean name="requestReadReceipt">false</boolean>
+<boolean name="isManualDisposition">true</boolean>
+<string name="subject">玉环农商行2018_叶坚静_计算机科学与技术_1991.10.15_男_15258297577_科技岗</string>
+<date name="sentDate">2017-12-04 15:13:44</date>
+<int name="priority">3</int>
+<string name="headerRaw">Received: from smtpbg331.qq.com (unknown [14.17.43.223])
+	by mx40 (Coremail) with SMTP id WsCowAAXDqup9SRaplxbCg--.20011S3;
+	Mon, 04 Dec 2017 15:13:45 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1512371625; bh=MOYMC9PuJQa6C9J+NfejDsvD6FB7GnzmuoJlc6fL3TM=;
+	h=From:To:Subject:Mime-Version:Content-Type:Content-Transfer-Encoding:Date:Message-ID;
+	b=xUMjO+8J3o/xYTVjYlbHFO81cttqGeOhnpdXblXGZXtd27mPKXF2NLwwfrReOfpJ3
+	 EMEo2b4eBclroaBgZsa6si4UPusQFuYCNaMlIiz6pyI44urU7AGvWcjVIjf/9of6wC
+	 t+/bW5cfRlTwh28hFhj8Qx/tAP7m9POGlKB2NgZE=
+X-QQ-FEAT: 2PHmmy4qbuL/2ZHHzytQeYy7a0ONT9t2xcJmWCT3CACI+Xu2kQRMcXih0BFbF
+	SBd83r3CNsQ37id2NY4CC6XoBp3gvB7CWCpOOkSIAEYZXNJyxuvDTYzEOvbrJGt30HoDJm9
+	B1HxvxJVxkKkB3bhZzgprH/BVC3UuhV42ymdss0qFqth5rEl4Uzu4M1aR9qa08KN+rm6DZG
+	kiSO2qunax99OF2beJR7mXkTEOLkAt6PXKKua3uqni7hr9bkS/B/vvsMnUa0ilD/MzuSGOG
+	5KHA==
+X-QQ-SSF: 000000000000002000000000000000Z
+X-HAS-ATTACH: no
+X-QQ-BUSINESS-ORIGIN: 2
+X-Originating-IP: 122.226.109.182
+X-QQ-STYLE:
+X-QQ-mid: webmail79t1512371624t9172875
+From: "=?gb18030?B?TWFuZ29fWQ==?=" &lt;562550671@qq.com&gt;
+To: "=?gb18030?B?MTUyNTgyOTc1Nzc=?=" &lt;15258297577@163.com&gt;
+Subject: =?gb18030?B?0/G7t8WpyczQ0DIwMThf0ra84b6yX7zGy+O7+r/G?=
+ =?gb18030?B?0afT67y8yvVfMTk5MS4xMC4xNV/E0F8xNTI1ODI5?=
+ =?gb18030?B?NzU3N1+/xry8uNo=?=
+Mime-Version: 1.0
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_5A24F5A8_09554270_1F8B7DF3"
+Content-Transfer-Encoding: 8Bit
+Date: Mon, 4 Dec 2017 15:13:44 +0800
+X-Priority: 3
+Message-ID: &lt;tencent_288966153588947BA06C9A778832BB70CA08@qq.com&gt;
+X-QQ-MIME: TCMime 1.0 by Tencent
+X-Mailer: QQMail 2.x
+X-QQ-Mailer: QQMail 2.x
+X-QQ-SENDSIZE: 520
+Received: from qq.com (unknown [127.0.0.1])
+	by smtp.qq.com (ESMTP) with SMTP
+	id ; Mon, 04 Dec 2017 15:13:44 +0800 (CST)
+Feedback-ID: webmail:qq.com:bgweb:bgweb133
+X-CM-TRANSID:WsCowAAXDqup9SRaplxbCg--.20011S3
+Authentication-Results: mx40; spf=pass smtp.mail=562550671@qq.com; dki
+	m=pass header.i=@qq.com
+X-Coremail-Antispam: 1Uf129KBjDUn29KB7ZKAUJ8b5iA529EdanIXcx71UUUUU7v73
+	VFW2AGmfu7bjvjm3AaLaJ3UbIYCTnIWIevJa73UjIFyTuYvjxUsXo2DUUUU
+</string>
+<object name="headers" />
+<object name="antispamInfo">
+<string name="RulesType"></string>
+<null name="GuestSender" /></object>
+<object name="html">
+<string name="id">2</string>
+<string name="contentType">text/html</string>
+<int name="contentLength">22</int>
+<string name="encoding">base64</string>
+<int name="contentOffset">2591</int>
+<int name="estimateSize">15</int></object>
+<object name="text">
+<string name="id">1</string>
+<string name="contentType">text/plain</string>
+<int name="contentLength">2</int>
+<string name="encoding">base64</string>
+<int name="contentOffset">2459</int>
+<int name="estimateSize">0</int></object>
+<array name="attachments">
+<object>
+<string name="id">3</string>
+<string name="filename">玉环农商行2018_叶坚静_计算机科学与技术_1991.10.15_男_15258297577_科技岗.doc</string>
+<string name="contentType">application/msword</string>
+<int name="contentLength">58938</int>
+<string name="encoding">base64</string>
+<int name="contentOffset">3092</int>
+<int name="estimateSize">43071</int></object></array></object></result>
