@@ -8,13 +8,18 @@ import types
 import uuid
 from orm import *
 from connect_db import ConnectDb
-
+from win32com import client as wc
+import os
+#global var
 global connectDb
 
 class ParseDoc:
     def __init__(self):
         print 'init'
     def parse(self,file_path):
+        suffix = os.path.splitext(file_path)[1]
+        if suffix is '.doc':
+            file_path = self.doc2docx(file_path)
         fullText = []
         doc = docx.Document(file_path)
         tables = doc.tables
@@ -193,6 +198,16 @@ class ParseDoc:
         reparsed = minidom.parseString(xml_content)
         print reparsed.toprettyxml(indent="   ", encoding="utf-8")
 
+    def doc2docx(self, file_path):
+        new_file_path = file_path + 'x'
+        word = wc.Dispatch('Word.Application')
+        doc = word.Documents.Open(file_path)
+        doc.SaveAs(new_file_path, 16)
+        doc.close()
+
+        word.Quit()
+
+        return new_file_path
 
 if __name__ == '__main__':
     text = ParseDoc().parse('/users/jianjingye/test2.doc')
