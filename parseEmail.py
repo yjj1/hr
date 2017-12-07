@@ -1,41 +1,23 @@
 # -*- coding:'utf8' -*-
 #encoding=utf-8
 
-import urllib
-import urllib2
-
 import os
 import uuid
-
 import requests
 import time
 from bs4 import BeautifulSoup
-
 from connect_db import ConnectDb
 from orm import TempEmail, OriginEmail, Accessory
 import sys
-
 from parseDoc import ParseDoc
-
-defaultencoding = 'utf-8'
 from urllib import urlencode
-import json
-import util
-#login email
-#if need vefiry code
-# def assignKey(o, e):
-#     if o.attrs['name'] == 'id':
-#         e = EmailOrm(o.string)
-#     elif o.attrs['name'] == 'subject':
-#         e.emailName = o.string
-#     # elif o.attrs['name'] ==
-
+import time
+defaultencoding = 'utf-8'
 class Email:
     username = None
     password = None
     url11 = 'http://mail.163.com/js6/main.jsp?sid=uCJoJpaaVDscennkuFaajkNAtqpTNdHs&df=email163'
     login_url = 'https://mail.163.com/entry/cgi/ntesdoor?funcid=loginone&language=-1&passtype=1&iframe=1&product=mail163&from=web&df=email163&race=25_10_29_bj&module=&uid=qh4343222tuxizhen@163.com&style=-1&net=n&skinid=null'
-        #'http://mail.163.com/entry/cgi/ntesdoor?'
     host_url = 'mail.163.com'
     origin = 'http://email.163.com'
     refer = 'http://email.163.com'
@@ -80,21 +62,11 @@ class Email:
                 for o in obj:
                     if o.attrs['name'] == 'filename':
                         name = o.string
-                        self.downloadDoc(e, str(j), name)
+                        self.downloadAccessory(e, str(j), name)
                         j = j + 1
             i = i + 1
 
-            # print result
-
-        # str = json.dumps(result, ensure_ascii=False)
-        # # str = str.replace('\n','')
-        # js = json.loads(str, encoding='utf-8')
-        # s = '{\"code\":\"ok\"}'
-        # jss = json.dumps(s)
-        # j_jss = json.loads(jss)
-        # print j_jss['code']
-
-    def downloadDoc(self, e, part, name):
+    def downloadAccessory(self, e, part, name):
         url = 'https://mail.163.com/js6/read/readdata.jsp?mid=' + e.emailId + '&sid=' + self.sid
         url = url + '&mode=download&l=read&action=download_attach&part=' + part
         resp = self.session.post(url, headers=self.header)
@@ -106,7 +78,8 @@ class Email:
         accessory = Accessory(str(uuid.uuid4()))
         accessory.emailId = e.emailId
         accessory.path = name
-        #if file is doc, parse it
+        self.db_session.add(accessory)
+        self.db_session.commit()
         suffix = os.path.splitext(name)[1]
         if suffix == '.doc' and e.status == '0':
             try:
@@ -155,8 +128,6 @@ class Email:
         xml = self.receiveXml.replace('\n', '')
         soup = BeautifulSoup(xml)
         array = soup.result.array
-        # for obj in array:
-        #     print obj.content
         objects = array.find_all('object')
         list = []
         for obj in objects:
@@ -186,9 +157,6 @@ class Email:
 
                 if o.attrs['name'] == 'priority':
                     e.priority = o.string
-
-                # if o.attrs['name'] == 'read':
-                #     e.isread = o.string
 
             if e != None:
                 list.append(e)
@@ -285,35 +253,19 @@ class Email:
         sid = sid.split('=')[1]
         print sid
         self.sid = sid
+        self.header = headers
+        self.session = session
+        return resp
 
+    def checkReceiveBox(self):
         #通过sid组装收件箱地址
-        receiveHtml = self.goToReceiveHtml(sid)
-        resp = session.post(receiveHtml)
+        receiveHtml = self.goToReceiveHtml(self.sid)
+        resp = self.session.post(receiveHtml)
 
         self.receiveXml = resp.content
         list = self.parseReceiveXml()
-        self.header = headers
-        self.session = session
-
-        # e = list[1]
-        # data1 = {
-        #     'sid': self.sid,
-        #     'mid': e.emailId,
-        #     'font': '15',
-        #     'color': '064977'
-        # }
-        #
-        # url = 'https://mail.163.com/js6/read/readhtml.jsp?mid=' + e.emailId + '&sid='+sid
-        # print url
-        #
-        # resp1 = requests.Session().post(url, data=data1, headers=headers)
-        #
-        # rs = resp1.content
-        # print rs.decode('GBK')
-        # print resp1.content
 
         #清空临时邮件表
-
         tempList = self.db_session.query(TempEmail).filter()
         for temp in tempList:
             self.db_session.delete(temp)
@@ -355,9 +307,17 @@ if __name__ == '__main__':
     reload(sys)
     sys.setdefaultencoding(defaultencoding)
 
-    # try:
     e = Email('15258297577@163.com', 'martha3137')
     resp = e.login()
-    # except:
-    #     print 'login err'
+    if resp.status_code == 200:
+        while True:
+            try:
+                print 'begin to check receive'
+                e.checkReceiveBox()
+                time.sleep(60)
+            except:
+                print 'err'
+    else:
+        print 'login err'
+
 
