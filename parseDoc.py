@@ -32,20 +32,10 @@ class ParseDoc:
         doc = docx.Document(file_path)
         tables = doc.tables
 
-        # for i_r, row in enumerate(tables[0].rows):
-        #     tmp_i = -1
-        #     for cell in row.cells:
-        #         tmp_i = tmp_i + 1
-        #         cell_data = []
-        #         # print cell.length
-        #         for p in cell.paragraphs:
-        #             cell_data.append(p.text)
-        #             print p.text
-        #             fullText.append(p)
         t = tables[0]
-        for i in range(0, 330):
-            content = t.cell(0, i).text
-            print content, '(',0,',',i, ')'
+        # for i in range(0, 330):
+        #     content = t.cell(0, i).text
+        #     print content, '(',0,',',i, ')'
 
         sUuid = str(uuid.uuid4())
         data = ResumeBaseInfo(sUuid)

@@ -219,10 +219,10 @@ class Email:
             'passtype': '1',
             'product':'mail163',
             'url2':gOption["url2"],
-            'email':'15258297577@163.com',
-            'uid':'15258297577@163.com',
-            'username':'15258297577@163.com',
-            'password':'martha3137',
+            'email':self.username,
+            'uid':self.username,
+            'username':self.username,
+            'password':self.password,
         }
         resp = session.post(self.login_url, headers=headers, data=oParam)
 
@@ -300,7 +300,7 @@ class Email:
 
     def __init__(self, u, p):
         self.password = p
-        self.u = u
+        self.username = u
         self.db_session = ConnectDb().db_session
 
 if __name__ == '__main__':
@@ -319,5 +319,3 @@ if __name__ == '__main__':
                 print 'err'
     else:
         print 'login err'
-
-

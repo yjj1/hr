@@ -18,6 +18,7 @@ class ConnectDb(object):
         DBSession = sessionmaker(bind=engine)
         self.db_session = DBSession()
 
+
     def __new__(cls, *args, **kwargs):
         if ConnectDb.__instance is None:
             ConnectDb.__instance = object.__new__(cls, *args, **kwargs)

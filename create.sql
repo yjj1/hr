@@ -60,7 +60,7 @@ CREATE TABLE resume_apply
   applyDate VARCHAR(50) DEFAULT '' NULL,
   emailId   VARCHAR(50) DEFAULT '' NULL,
   status    VARCHAR(50) DEFAULT '' NULL
-);
+)ENGINE =InnoDb DEFAULT CHARSET =utf8;
 
 -- auto-generated definition
 CREATE TABLE origin_email
@@ -76,7 +76,7 @@ CREATE TABLE origin_email
   sendDate    VARCHAR(50) DEFAULT ''  NULL,
   receiveDate VARCHAR(50) DEFAULT ''  NULL,
   priority    VARCHAR(50) DEFAULT ''  NULL
-);
+)ENGINE =InnoDb DEFAULT CHARSET =utf8;
 
 -- auto-generated definition
 CREATE TABLE temp_email
@@ -84,4 +84,16 @@ CREATE TABLE temp_email
   emailId   VARCHAR(50)             NOT NULL
     PRIMARY KEY,
   emailName VARCHAR(200) DEFAULT '' NULL
-);
+)ENGINE =InnoDb DEFAULT CHARSET =utf8;
+
+create table accessory
+(
+	accessoryId varchar(50) not null
+		primary key,
+	accessoryName varchar(100) default '' null,
+	emailId varchar(50) null,
+	resumeId varchar(50) null,
+	path varchar(100) default '' null
+)ENGINE =InnoDb DEFAULT CHARSET =utf8;
+
+
