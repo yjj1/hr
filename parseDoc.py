@@ -14,8 +14,13 @@ import os
 global connectDb
 
 class ParseDoc:
+    emailId = None
     def __init__(self):
         print 'init'
+
+    def setEmailId(self, eId):
+        self.emailId = eId
+
     def parse(self,file_path):
         path_array = os.path.splitext(file_path)
         file_name = path_array[0]
@@ -189,6 +194,12 @@ class ParseDoc:
         # print t.cell(0,10).text
         # print t.cell(0,11).text
 
+        #如果从邮件中来，则更新邮件状态
+        if self.emailId is not None:
+            session.query(OriginEmail).filter(OriginEmail.emailId == self.emailId).update({
+                OriginEmail.status:'1'
+            })
+            session.commit()
 
         return fullText
 

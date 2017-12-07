@@ -12,7 +12,7 @@ import time
 from bs4 import BeautifulSoup
 
 from connect_db import ConnectDb
-from orm import EmailOrm, TempEmail
+from orm import TempEmail, OriginEmail, Accessory
 import sys
 
 from parseDoc import ParseDoc
@@ -44,6 +44,7 @@ class Email:
     sid = None
     header = None
     session = None
+    db_session = None
 
     def encryPwd(self, p):
         self.password = p
@@ -97,18 +98,28 @@ class Email:
         url = 'https://mail.163.com/js6/read/readdata.jsp?mid=' + e.emailId + '&sid=' + self.sid
         url = url + '&mode=download&l=read&action=download_attach&part=' + part
         resp = self.session.post(url, headers=self.header)
-        # u = urllib2.urlopen(url)
-        # doc = open(e.emailName + '.doc', 'wb+')
-        # doc.write(u.read())
-        # doc.close()
 
+        name = 'D:\\hr_file\\'+str(uuid.uuid4()) + name
         with open(name, "wb") as code:
             code.write(resp.content)
+        # 保存附件
+        accessory = Accessory(str(uuid.uuid4()))
+        accessory.emailId = e.emailId
+        accessory.path = name
         #if file is doc, parse it
-        suffix = os.path.splitext(name)
-        if suffix is '.doc':
-            parse = ParseDoc()
-            parse.parse(name)
+        suffix = os.path.splitext(name)[1]
+        if suffix == '.doc' and e.status == '0':
+            try:
+                parse = ParseDoc()
+                parse.setEmailId(e.emailId)
+                parse.parse(name)
+            except:
+                self.db_session.query(OriginEmail)\
+                    .filter(OriginEmail.emailId==e.emailId)\
+                    .update({
+                    OriginEmail.status : '-1'
+                })
+                self.db_session.commit()
 
     def parsePerEmail(self, e):
         url = 'https://mail.163.com/js6/read/readhtml.jsp?mid='+ e.emailId + '&sid=' + self.sid
@@ -153,7 +164,7 @@ class Email:
             for o in obj:
                 print o.string,':', o.attrs['name']
                 if o.attrs['name'] == 'id':
-                    e = EmailOrm(o.string)
+                    e = OriginEmail(o.string)
 
                 if o.attrs['name'] == 'subject':
                     e.emailName = o.string
@@ -181,11 +192,6 @@ class Email:
 
             if e != None:
                 list.append(e)
-
-        for e in list:
-            print e.emailId, e.emailName, e.fromWho, e.toWho
-
-            # self.parsePerEmail(e)
 
         return list
 
@@ -225,7 +231,6 @@ class Email:
         #     ''
         # }
 
-
         gOption = {
             "sDomain": "163.com",
             "sCookieDomain": "mail.163.com",
@@ -251,19 +256,11 @@ class Email:
             'username':'15258297577@163.com',
             'password':'martha3137',
         }
-        #
-
-
         resp = session.post(self.login_url, headers=headers, data=oParam)
 
         soup = BeautifulSoup(resp.content)
         s = soup.script.string
         s = s.split('\"')[1]
-        # s = s.replace('top.location.href','')
-        # s = s.replace('=','')
-        # s = s.replace(';','')
-        # s = s.replace('\"','')
-        # s = s.replace(' ', '')
         respCookie = resp.cookies
         sCookie = ''
         for c in respCookie:
@@ -316,45 +313,51 @@ class Email:
         # print resp1.content
 
         #清空临时邮件表
-        connectDb = ConnectDb()
-        session = connectDb.db_session
-        tempList = session.query(TempEmail).filter()
+
+        tempList = self.db_session.query(TempEmail).filter()
         for temp in tempList:
-            session.delete(temp)
+            self.db_session.delete(temp)
 
         #将邮件放入临时邮件表
+        yhList = []
         for e in list:
             if '玉环农商行2018' in e.emailName:
-                self.parsePerEmail(e)
                 tempE = TempEmail(e.emailId)
                 tempE.emailName = e.emailName
-                session.add(tempE)
-        session.commit()
+                yhList.append(e)
+                self.db_session.add(tempE)
+                self.db_session.commit()
         sql = 'select A.emailId from temp_email A where A.emailId not in  (select emailId from origin_email)'
-        c = session.execute(sql)
-        list = []
+        c = self.db_session.execute(sql)
+        idList = []
         for row in c :
             print row[0]
-            list.append(row[0])
+            idList.append(row[0])
+
+        newList = []
+        for e in yhList:
+            for eid in idList:
+                if e.emailId == eid:
+                    e.status = '0'
+                    self.db_session.add(e)
+                    newList.append(e)
+                    self.db_session.commit()
+                    self.parsePerEmail(e)
+
         return resp
 
-
     def __init__(self, u, p):
-        self.password = self.encryPwd(p)
+        self.password = p
         self.u = u
+        self.db_session = ConnectDb().db_session
 
 if __name__ == '__main__':
     reload(sys)
     sys.setdefaultencoding(defaultencoding)
 
+    # try:
     e = Email('15258297577@163.com', 'martha3137')
     resp = e.login()
+    # except:
+    #     print 'login err'
 
-    # header = None
-    # if resp.status_code != 200:
-    #     print '登录失败,网络连接状态码为' + resp.status_code
-    # else :
-    #     header = resp.headers
-    #
-    # cookie = header['cookie']
-    # sessionid = header['sessionid']

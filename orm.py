@@ -6,7 +6,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
-class EmailOrm(Base):
+class OriginEmail(Base):
 
     __tablename__   = 'origin_email'
 
@@ -20,6 +20,8 @@ class EmailOrm(Base):
     report = Column(String(50))
     isread = Column(String(50))
     priority = Column(String(50))
+    status = Column(String(50))
+    flags = Column(String(50))
 
     def __init__(self, id):
         self.emailId = id
@@ -106,3 +108,16 @@ class TempEmail(Base):
 
     def __init__(self, id):
         self.emailId = id
+
+class Accessory(Base):
+
+    __tablename__   = 'accessory'
+
+    accessoryId = Column(String(50), primary_key=True)
+    accessoryName = Column(String(100))
+    emailId = Column(String(50))
+    resumeId = Column(String(50))
+    path = Column(String(50))
+
+    def __init__(self, id):
+        self.accessoryId = id
