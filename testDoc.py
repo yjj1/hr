@@ -43,73 +43,75 @@ class ParseDoc:
         name = t.cell(0,1).text
         sex = t.cell(0,5).text
         birthday = t.cell(0,11).text
-        eduBack = t.cell(0,17).text
-        height = t.cell(0, 21).text
-        health = t.cell(0, 27).text
-        politicsStatus = t.cell(0, 33).text
-        nativePlace = t.cell(0,37).text
-        marriage = t.cell(0,43).text
-        address = t.cell(0,49).text
-        idCard = t.cell(0,65).text
-        phone = t.cell(0,84).text
-        homePhone = t.cell(0,93).text
-        czSchool = t.cell(0,114).text
-        czPro = t.cell(0,121).text
-        czDate = t.cell(0,124).text
+        eduBack = t.cell(0,16).text
+        height = t.cell(0, 20).text
+        health = t.cell(0, 26).text
+        politicsStatus = t.cell(0, 31).text
+        nativePlace = t.cell(0,35).text
+        marriage = t.cell(0,41).text
+        pro = t.cell(0,54).text
+        school = t.cell(0,46).text
+        address = t.cell(0,61).text
+        idCard = t.cell(0,76).text
+        phone = t.cell(0,93).text
+        homePhone = t.cell(0,99).text
+        czSchool = t.cell(0,123).text
+        czPro = t.cell(0,130).text
+        czDate = t.cell(0,132).text
 
-        gzSchool = t.cell(0,130).text
-        gzPro = t.cell(0,137).text
-        gzDate = t.cell(0,140).text
+        gzSchool = t.cell(0,138).text
+        gzPro = t.cell(0,145).text
+        gzDate = t.cell(0,147).text
 
-        dzSchool = t.cell(0,146).text
-        dzPro = t.cell(0,153).text
-        dzDate = t.cell(0,156).text
+        dzSchool = t.cell(0,153).text
+        dzPro = t.cell(0,160).text
+        dzDate = t.cell(0,162).text
 
-        bkSchool = t.cell(0,162).text
-        bkPro = t.cell(0,169).text
-        bkDate = t.cell(0,172).text
+        bkSchool = t.cell(0,168).text
+        bkPro = t.cell(0,175).text
+        bkDate = t.cell(0,177).text
 
-        yjsSchool = t.cell(0, 178).text
-        yjsPro = t.cell(0, 185).text
-        yjsDate = t.cell(0, 188).text
+        yjsSchool = t.cell(0, 183).text
+        yjsPro = t.cell(0, 190).text
+        yjsDate = t.cell(0, 192).text
 
-        bigBang = t.cell(0,193).text
+        bigBang = t.cell(0,196).text
 
-        job = t.cell(0,305).text
-        isAddressControl = t.cell(0,327).text
-        hobbies = t.cell(0, 289).text
+        job = t.cell(0,287).text
+        isAddressControl = t.cell(0,308).text
+        hobbies = t.cell(0, 271).text
         #家庭
         f1 = Family(str(uuid.uuid4()))
         f1.resumeId = data.resumeId
-        f1.name=t.cell(0,225).text
-        f1.relationShip=t.cell(0,227).text
-        f1.politicsStatus=t.cell(0,230).text
-        f1.company=t.cell(0,233).text
+        f1.name=t.cell(0,226).text
+        f1.relationShip=t.cell(0,229).text
+        f1.politicsStatus=t.cell(0,231).text
+        f1.company=t.cell(0,235).text
         f1.job=t.cell(0,239).text
 
         f2 = Family(str(uuid.uuid4()))
         f2.resumeId = data.resumeId
         f2.name = t.cell(0, 241).text
-        f2.relationShip = t.cell(0, 243).text
+        f2.relationShip = t.cell(0, 244).text
         f2.politicsStatus = t.cell(0, 246).text
-        f2.company = t.cell(0, 249).text
-        f2.job = t.cell(0, 255).text
+        f2.company = t.cell(0, 250).text
+        f2.job = t.cell(0, 254).text
 
         f3 = Family(str(uuid.uuid4()))
         f3.resumeId = data.resumeId
-        f3.name = t.cell(0, 257).text
+        f3.name = t.cell(0, 256).text
         f3.relationShip = t.cell(0, 259).text
-        f3.politicsStatus = t.cell(0, 262).text
+        f3.politicsStatus = t.cell(0, 261).text
         f3.company = t.cell(0, 265).text
-        f3.job = t.cell(0, 271).text
+        f3.job = t.cell(0, 269).text
 
-        f4 = Family(str(uuid.uuid4()))
-        f4.resumeId = data.resumeId
-        f4.name = t.cell(0, 273).text
-        f4.relationShip = t.cell(0, 275).text
-        f4.politicsStatus = t.cell(0, 278).text
-        f4.company = t.cell(0, 281).text
-        f4.job = t.cell(0, 287).text
+        # f4 = Family(str(uuid.uuid4()))
+        # f4.resumeId = data.resumeId
+        # f4.name = t.cell(0, 273).text
+        # f4.relationShip = t.cell(0, 275).text
+        # f4.politicsStatus = t.cell(0, 278).text
+        # f4.company = t.cell(0, 281).text
+        # f4.job = t.cell(0, 287).text
 
         data.name = name
         data.sex = sex
@@ -129,6 +131,8 @@ class ParseDoc:
         data.job = job
         data.isAddressControl = isAddressControl
         data.hobbies = hobbies
+        data.eduDegree = pro
+        data.school = school
 
         if self.emailId is not None:
             data.emailId = self.emailId
@@ -174,7 +178,7 @@ class ParseDoc:
         session.add(f1)
         session.add(f2)
         session.add(f3)
-        session.add(f4)
+        # session.add(f4)
         session.add(eduDataCz)
         session.add(eduDataGz)
         session.add(eduDataDz)
@@ -183,10 +187,10 @@ class ParseDoc:
 
         session.commit()
 
-        # print t.cell(0,8).text
-        # print t.cell(0,9).text
-        # print t.cell(0,10).text
-        # print t.cell(0,11).text
+        print t.cell(0,8).text
+        print t.cell(0,9).text
+        print t.cell(0,10).text
+        print t.cell(0,11).text
 
         #如果从邮件中来，则更新邮件状态
         if self.emailId is not None:
@@ -216,7 +220,8 @@ class ParseDoc:
         return new_file_path
 
 if __name__ == '__main__':
-    text = ParseDoc().parse('F:\\apache-tomcat-7.0.72\\bin\\hr_file\\0d1731b7-05ea-4257-b96e-02eeccea1435玉环农商行2018_叶坚静.doc')
-    # ParseDoc().zipParse('/users/jianjingye/test2.doc')
+    # text = ParseDoc().parse('F:\\apache-tomcat-7.0.72\\bin\\hr_file\\0d1731b7-05ea-4257-b96e-02eeccea1435玉环农商行2018_叶坚静.doc')
+    text = ParseDoc().parse('D:\\test2.doc')
+# ParseDoc().zipParse('/users/jianjingye/test2.doc')
     # for t in text:
     #     print t.text

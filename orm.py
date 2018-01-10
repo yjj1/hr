@@ -14,14 +14,15 @@ class OriginEmail(Base):
     emailName = Column(String(200))
     sendDate = Column(String(50))
     receiveDate = Column(String(50))
-    fromWho = Column(String(50), name='from')
-    toWho = Column(String(50), name='to')
+    fromWho = Column(String(50), name='fromWho')
+    toWho = Column(String(50), name='toWho')
     size = Column(String(50))
     report = Column(String(50))
     isread = Column(String(50))
     priority = Column(String(50))
     status = Column(String(50))
     flags = Column(String(50))
+
 
     def __init__(self, id):
         self.emailId = id
@@ -65,7 +66,8 @@ class ResumeBaseInfo(Base):
     idCard = Column(String(50))
     job = Column(String(50))
     isAddressControl = Column(String(50))
-
+    emailId = Column(String(50))
+    hobbies = Column(String(50))
     def __init__(self, id):
         self.resumeId = id
 

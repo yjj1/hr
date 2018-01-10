@@ -70,14 +70,16 @@ class Email:
         url = 'https://mail.163.com/js6/read/readdata.jsp?mid=' + e.emailId + '&sid=' + self.sid
         url = url + '&mode=download&l=read&action=download_attach&part=' + part
         resp = self.session.post(url, headers=self.header)
-
-        name = 'D:\\hr_file\\'+str(uuid.uuid4()) + name
+        p = name
+        db_name = str(uuid.uuid4()) + name
+        name = 'F:\\apache-tomcat-7.0.72\\bin\\hr_file\\'+db_name
         with open(name, "wb") as code:
             code.write(resp.content)
         # 保存附件
         accessory = Accessory(str(uuid.uuid4()))
         accessory.emailId = e.emailId
-        accessory.path = name
+        accessory.path = db_name
+        accessory.accessoryName = p
         self.db_session.add(accessory)
         self.db_session.commit()
         suffix = os.path.splitext(name)[1]
@@ -144,10 +146,14 @@ class Email:
                     e.size = o.string
 
                 if o.attrs['name'] == 'from':
-                    e.fromWho = o.string
+                    sss = o.string
+                    sss = sss.replace('\"', '')
+                    e.fromWho = ''
 
                 if o.attrs['name'] == 'to':
-                    e.toWho = o.string
+                    sss = o.string
+                    sss = sss.replace('\"', '')
+                    e.toWho = ''
 
                 if o.attrs['name'] == 'sentDate':
                     e.sendDate = o.string
@@ -159,6 +165,7 @@ class Email:
                     e.priority = o.string
 
             if e != None:
+                e.flags = 1
                 list.append(e)
 
         return list
@@ -273,7 +280,7 @@ class Email:
         #将邮件放入临时邮件表
         yhList = []
         for e in list:
-            if '玉环农商行2018' in e.emailName:
+            if '玉环农商行2018' in e.emailName or '玉环农商银行2018' in e.emailName:
                 tempE = TempEmail(e.emailId)
                 tempE.emailName = e.emailName
                 yhList.append(e)
@@ -316,6 +323,6 @@ if __name__ == '__main__':
                 e.checkReceiveBox()
                 time.sleep(60)
             except:
-                print 'err'
+                print '解析错误，请重新开启'
     else:
-        print 'login err'
+        print '163邮箱登录失败'
